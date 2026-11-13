@@ -1,0 +1,53 @@
+<template>
+  <style>
+    @font-face { font-family: "KR"; src: local("Malgun Gothic Bold"), local("MalgunGothicBold"), local("Malgun Gothic"); font-weight: 900; }
+    #root { position: absolute; inset: 0; background: #f4ece2; overflow: hidden; font-family: "KR", sans-serif; color: #1a1714; }
+    #w-scan { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; background: repeating-linear-gradient(180deg, rgba(26,23,20,0.06) 0 4px, transparent 4px 12px); }
+    #w-rec { position: absolute; left: 80px; top: 210px; font: 400 56px "Archivo Black", sans-serif; color: #ff5a36; }
+    #w-age { position: absolute; left: 0; width: 1080px; top: 330px; text-align: center; font: 400 440px "Archivo Black", sans-serif; letter-spacing: -0.05em; line-height: 1; color: #ff5a36; }
+    .w-meter { position: absolute; left: 140px; width: 800px; font-size: 92px; font-weight: 900; letter-spacing: -0.03em; }
+    #w-m1 { top: 830px; }
+    #w-m2 { top: 960px; }
+    .w-arrow { color: #ff5a36; display: inline-block; }
+    #w-warn { position: absolute; left: 60px; top: 360px; width: 960px; height: 880px; background: #1a1714; color: #f4ece2; border-radius: 40px; padding: 70px 60px; }
+    #w-warn-h { font-size: 64px; font-weight: 900; color: #ffc83d; }
+    #w-warn-b { margin-top: 50px; font-size: 98px; font-weight: 900; line-height: 1.2; letter-spacing: -0.04em; }
+    #w-warn-b b { color: #ff5a36; }
+    #w-id { position: absolute; left: 600px; top: 650px; width: 280px; height: 170px; background: #f4ece2; border-radius: 16px; color: #1a1714; font-size: 40px; font-weight: 900; padding: 22px; }
+    #w-id-ph { position: absolute; left: 22px; top: 80px; height: 70px !important; width: 80px; height: 90px; background: #ff9eb0; border-radius: 8px; }
+    #w-id-q { position: absolute; left: 120px; top: 80px; font-size: 64px; color: #ff5a36; }
+  </style>
+  <div id="root" data-composition-id="rewind" data-width="1080" data-height="1920">
+    <div id="w-scan"></div>
+    <div id="w-rec">◀◀ REWIND</div>
+    <div id="w-age">49</div>
+    <div id="w-m1" class="w-meter">주름 <span class="w-arrow" id="w-a1">▼▼▼</span></div>
+    <div id="w-m2" class="w-meter">자신감 <span class="w-arrow" id="w-a2">▲▲▲</span></div>
+    <div id="w-warn">
+      <div id="w-warn-h">⚠ 부작용 안내</div>
+      <div id="w-warn-b">편의점에서<br /><b>민증 검사</b><br />당할 수 있음.</div>
+      <div id="w-id"><span>신분증</span><div id="w-id-ph"></div><div id="w-id-q">??</div></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const age = { v: 49 };
+    const el = document.querySelector("#w-age");
+    tl.fromTo("#w-rec", { opacity: 0 }, { opacity: 1, duration: 0.1, yoyo: true, repeat: 9, ease: "none" }, 0);
+    tl.fromTo("#w-age", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power3.out" }, 0);
+    tl.fromTo(age, { v: 49 }, { v: 29, duration: 2.0, ease: "power3.inOut", onUpdate: () => { el.textContent = Math.round(age.v); } }, 0.3);
+    tl.fromTo("#w-age", { skewX: 0, x: 0 }, { skewX: -12, x: -20, duration: 0.1, yoyo: true, repeat: 15, ease: "none" }, 0.3);
+    tl.fromTo("#w-scan", { y: 0 }, { y: 96, duration: 2.0, ease: "none" }, 0.3);
+    tl.fromTo("#w-age", { color: "#ff5a36" }, { color: "#1a1714", duration: 0.3 }, 2.2);
+    tl.fromTo("#w-m1", { opacity: 0, x: -300 }, { opacity: 1, x: 0, duration: 0.3, ease: "power4.out" }, 1.0);
+    tl.fromTo("#w-m2", { opacity: 0, x: 300 }, { opacity: 1, x: 0, duration: 0.3, ease: "power4.out" }, 1.4);
+    tl.fromTo("#w-a1", { y: 0 }, { y: 20, duration: 0.2, yoyo: true, repeat: 5, ease: "sine.inOut" }, 1.3);
+    tl.fromTo("#w-a2", { y: 0 }, { y: -20, duration: 0.2, yoyo: true, repeat: 5, ease: "sine.inOut" }, 1.7);
+    // side-effect gag
+    tl.fromTo("#w-warn", { y: 1600, rotation: 6 }, { y: 0, rotation: -2, duration: 0.45, ease: "back.out(1.4)" }, 3.3);
+    tl.fromTo("#w-id", { scale: 0, rotation: 30 }, { scale: 1, rotation: 8, duration: 0.3, ease: "back.out(3)" }, 4.6);
+    tl.fromTo("#w-id-q", { scale: 1 }, { scale: 1.3, duration: 0.15, yoyo: true, repeat: 5, ease: "sine.inOut" }, 5.0);
+    tl.to("#w-warn", { x: -1200, duration: 0.35, ease: "power3.in" }, 6.6);
+    window.__timelines["rewind"] = tl;
+  </script>
+</template>

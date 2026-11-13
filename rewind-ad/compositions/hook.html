@@ -1,0 +1,47 @@
+<template>
+  <style>
+    @font-face { font-family: "KR"; src: local("Malgun Gothic Bold"), local("MalgunGothicBold"), local("Malgun Gothic"); font-weight: 900; }
+    #root { position: absolute; inset: 0; background: #f4ece2; overflow: hidden; font-family: "KR", sans-serif; color: #1a1714; }
+    .h-line { position: absolute; left: 0; width: 1080px; text-align: center; font-weight: 900; letter-spacing: -0.04em; line-height: 1; }
+    #h-l1 { top: 330px; font-size: 270px; }
+    #h-l1 span { display: inline-block; }
+    #h-l2 { top: 640px; font-size: 200px; }
+    #h-wr { position: absolute; left: 140px; top: 340px; width: 800px; height: 260px; }
+    #h-wr path { fill: none; stroke: #ff5a36; stroke-width: 12; stroke-linecap: round; }
+    #h-l3 { top: 930px; font-size: 120px; color: #9b8f84; }
+    #h-strike { position: absolute; left: 335px; top: 985px; width: 410px; height: 16px; background: #1a1714; transform-origin: left center; }
+    #h-l4 { top: 1090px; font-size: 150px; color: #ff5a36; }
+    #h-tag { position: absolute; left: 70px; top: 200px; font: 900 34px "Archivo Black", sans-serif; letter-spacing: 0.2em; color: #1a1714; opacity: 0.55; }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div id="h-tag">BREAKING NEWS · 오전 7:02</div>
+    <div id="h-l1" class="h-line"><span id="h-c1">주</span><span id="h-c2">름</span><span id="h-c3">이</span></div>
+    <svg id="h-wr" viewBox="0 0 800 260">
+      <path id="h-p1" d="M20 60 Q 120 30 220 60 T 420 60 T 620 60 T 780 60" />
+      <path id="h-p2" d="M40 130 Q 140 100 240 130 T 440 130 T 640 130 T 760 130" />
+      <path id="h-p3" d="M60 200 Q 160 170 260 200 T 460 200 T 660 200 T 740 200" />
+    </svg>
+    <div id="h-l2" class="h-line">생겼다.</div>
+    <div id="h-l3" class="h-line">셔츠에</div>
+    <div id="h-strike"></div>
+    <div id="h-l4" class="h-line">…얼굴에.</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#h-tag", { opacity: 0, x: -30 }, { opacity: 0.55, x: 0, duration: 0.3, ease: "power3.out" }, 0.1);
+    tl.fromTo("#h-l2", { opacity: 0, y: 160, scaleY: 1.8 }, { opacity: 1, y: 0, scaleY: 1, duration: 0.35, ease: "back.out(2.5)" }, 0.45);
+    // the word wrinkles
+    ["#h-p1", "#h-p2", "#h-p3"].forEach((p, i) => {
+      tl.fromTo(p, { strokeDasharray: 1000, strokeDashoffset: 1000 }, { strokeDashoffset: 0, duration: 0.45, ease: "power2.inOut" }, 1.1 + i * 0.15);
+    });
+    tl.fromTo("#h-c1", { skewX: 0, scaleY: 1 }, { skewX: -14, scaleY: 0.86, duration: 0.12, yoyo: true, repeat: 7, ease: "sine.inOut" }, 1.1);
+    tl.fromTo("#h-c2", { skewX: 0, scaleY: 1 }, { skewX: 14, scaleY: 0.82, duration: 0.12, yoyo: true, repeat: 7, ease: "sine.inOut" }, 1.16);
+    tl.fromTo("#h-c3", { skewX: 0, scaleY: 1 }, { skewX: -10, scaleY: 0.88, duration: 0.12, yoyo: true, repeat: 7, ease: "sine.inOut" }, 1.22);
+    tl.fromTo("#h-l3", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.2);
+    tl.fromTo("#h-strike", { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "power4.in" }, 2.9);
+    tl.fromTo("#h-l4", { opacity: 0, scale: 2.6, rotation: -8 }, { opacity: 1, scale: 1, rotation: -3, duration: 0.28, ease: "power4.in" }, 3.25);
+    tl.fromTo("#root", { x: 0 }, { x: 18, duration: 0.04, yoyo: true, repeat: 5, ease: "none" }, 3.53);
+    tl.to(["#h-tag", "#h-l1", "#h-wr", "#h-l2", "#h-l3", "#h-strike", "#h-l4"], { y: -1400, duration: 0.45, ease: "power3.in", stagger: 0.03 }, 4.4);
+    window.__timelines["hook"] = tl;
+  </script>
+</template>
