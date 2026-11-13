@@ -9,7 +9,9 @@
     #e-bar { position: absolute; left: 340px; top: 790px; width: 400px; height: 8px; background: #f4ece2; transform-origin: center; }
     #e-brand { top: 880px; font: 400 160px "Archivo Black", sans-serif; letter-spacing: -0.03em; }
     #e-sub { top: 1080px; font-size: 54px; color: #ffc83d; }
-    #e-ff { position: absolute; left: 0; width: 1080px; top: 1180px; text-align: center; font: 400 60px "Archivo Black", sans-serif; color: #ff5a36; }
+    #e-cta { position: absolute; left: 90px; top: 1170px; width: 620px; height: 130px; border-radius: 65px; background: #ff5a36; color: #fff; font-size: 58px; font-weight: 900; text-align: center; line-height: 130px; }
+    #e-stamp { position: absolute; left: 750px; top: 1120px; width: 230px; height: 230px; border-radius: 50%; background: #ffc83d; color: #1a1714; font-size: 40px; font-weight: 900; text-align: center; padding-top: 52px; line-height: 1.1; }
+    #e-stamp b { font: 400 76px "Archivo Black", sans-serif; }
   </style>
   <div id="root" data-composition-id="endcard" data-width="1080" data-height="1920">
     <div id="e-s1" class="e-line" data-var-text="slogan1">나이는 그대로,</div>
@@ -17,7 +19,8 @@
     <div id="e-bar"></div>
     <div id="e-brand" class="e-line" data-var-text="brand">REWIND</div>
     <div id="e-sub" class="e-line">되감기 크림</div>
-    <div id="e-ff">◀◀</div>
+    <div id="e-cta">지금 되감기 시작 ▶</div>
+    <div id="e-stamp">첫 구매<br /><b>1+1</b></div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
@@ -28,8 +31,9 @@
     tl.fromTo("#e-bar", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power3.inOut" }, 1.8);
     tl.fromTo("#e-brand", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power4.out" }, 2.1);
     tl.fromTo("#e-sub", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 2.6);
-    tl.fromTo("#e-ff", { opacity: 0, x: 120 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.9);
-    tl.fromTo("#e-ff", { x: 0 }, { x: -24, duration: 0.3, yoyo: true, repeat: 5, ease: "sine.inOut", immediateRender: false }, 3.4);
+    tl.fromTo("#e-cta", { opacity: 0, y: 120 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2.5)" }, 3.4);
+    tl.fromTo("#e-cta", { scale: 1 }, { scale: 1.07, duration: 0.3, yoyo: true, repeat: 5, ease: "sine.inOut", immediateRender: false }, 3.9);
+    tl.fromTo("#e-stamp", { opacity: 0, scale: 3, rotation: -40 }, { opacity: 1, scale: 1, rotation: 12, duration: 0.3, ease: "power4.in" }, 3.7);
     window.__timelines["endcard"] = tl;
   </script>
 </template>
