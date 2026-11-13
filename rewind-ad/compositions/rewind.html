@@ -9,6 +9,7 @@
     #w-m1 { top: 830px; }
     #w-m2 { top: 960px; }
     .w-arrow { color: #ff5a36; display: inline-block; }
+    #w-chip { position: absolute; left: 140px; top: 1110px; padding: 22px 40px; border-radius: 60px; background: #1a1714; color: #ffc83d; font-size: 52px; font-weight: 900; }
     #w-warn { position: absolute; left: 60px; top: 360px; width: 960px; height: 880px; background: #1a1714; color: #f4ece2; border-radius: 40px; padding: 70px 60px; }
     #w-warn-h { font-size: 64px; font-weight: 900; color: #ffc83d; }
     #w-warn-b { margin-top: 50px; font-size: 98px; font-weight: 900; line-height: 1.2; letter-spacing: -0.04em; }
@@ -23,6 +24,7 @@
     <div id="w-age">49</div>
     <div id="w-m1" class="w-meter">주름 <span class="w-arrow" id="w-a1">▼▼▼</span></div>
     <div id="w-m2" class="w-meter">자신감 <span class="w-arrow" id="w-a2">▲▲▲</span></div>
+    <div id="w-chip">자는 동안 8시간 집중 케어</div>
     <div id="w-warn">
       <div id="w-warn-h">⚠ 부작용 안내</div>
       <div id="w-warn-b">편의점에서<br /><b>민증 검사</b><br />당할 수 있음.</div>
@@ -43,6 +45,7 @@
     tl.fromTo("#w-m2", { opacity: 0, x: 300 }, { opacity: 1, x: 0, duration: 0.3, ease: "power4.out" }, 1.4);
     tl.fromTo("#w-a1", { y: 0 }, { y: 20, duration: 0.2, yoyo: true, repeat: 5, ease: "sine.inOut" }, 1.3);
     tl.fromTo("#w-a2", { y: 0 }, { y: -20, duration: 0.2, yoyo: true, repeat: 5, ease: "sine.inOut" }, 1.7);
+    tl.fromTo("#w-chip", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, 2.2);
     // side-effect gag
     tl.fromTo("#w-warn", { y: 1600, rotation: 6 }, { y: 0, rotation: -2, duration: 0.45, ease: "back.out(1.4)" }, 3.3);
     tl.fromTo("#w-id", { scale: 0, rotation: 30 }, { scale: 1, rotation: 8, duration: 0.3, ease: "back.out(3)" }, 4.6);

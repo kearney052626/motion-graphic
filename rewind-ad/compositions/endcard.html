@@ -11,6 +11,10 @@
     #e-sub { top: 1080px; font-size: 54px; color: #ffc83d; }
     #e-cta { position: absolute; left: 90px; top: 1170px; width: 620px; height: 130px; border-radius: 65px; background: #ff5a36; color: #fff; font-size: 58px; font-weight: 900; text-align: center; line-height: 130px; }
     #e-stamp { position: absolute; left: 750px; top: 1120px; width: 230px; height: 230px; border-radius: 50%; background: #ffc83d; color: #1a1714; font-size: 40px; font-weight: 900; text-align: center; padding-top: 52px; line-height: 1.1; }
+    #e-old { position: absolute; left: 0; width: 1080px; top: 215px; text-align: center; font-size: 56px; font-weight: 900; color: #8a8079; text-decoration: line-through; }
+    #e-new { position: absolute; left: 0; width: 1080px; top: 285px; text-align: center; font-size: 84px; font-weight: 900; color: #ffc83d; letter-spacing: -0.03em; }
+    #e-new small { font-size: 44px; color: #f4ece2; }
+    #e-dl { position: absolute; left: 0; width: 1080px; top: 1325px; text-align: center; font-size: 40px; font-weight: 900; color: #ff5a36; }
     #e-stamp b { font: 400 76px "Archivo Black", sans-serif; }
   </style>
   <div id="root" data-composition-id="endcard" data-width="1080" data-height="1920">
@@ -20,6 +24,9 @@
     <div id="e-brand" class="e-line" data-var-text="brand">REWIND</div>
     <div id="e-sub" class="e-line">되감기 크림</div>
     <div id="e-cta">지금 되감기 시작 ▶</div>
+    <div id="e-old">정가 39,000원</div>
+    <div id="e-new">19,500원 <small>오늘만 50%</small></div>
+    <div id="e-dl">● 오늘 자정 마감 · 무료배송</div>
     <div id="e-stamp">첫 구매<br /><b>1+1</b></div>
   </div>
   <script>
@@ -34,6 +41,9 @@
     tl.fromTo("#e-cta", { opacity: 0, y: 120 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2.5)" }, 3.4);
     tl.fromTo("#e-cta", { scale: 1 }, { scale: 1.07, duration: 0.3, yoyo: true, repeat: 5, ease: "sine.inOut", immediateRender: false }, 3.9);
     tl.fromTo("#e-stamp", { opacity: 0, scale: 3, rotation: -40 }, { opacity: 1, scale: 1, rotation: 12, duration: 0.3, ease: "power4.in" }, 3.7);
+    tl.fromTo("#e-old", { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 4.0);
+    tl.fromTo("#e-new", { opacity: 0, scale: 2.2 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 4.3);
+    tl.fromTo("#e-dl", { opacity: 0 }, { opacity: 1, duration: 0.2, yoyo: true, repeat: 4, ease: "none" }, 4.5);
     window.__timelines["endcard"] = tl;
   </script>
 </template>
